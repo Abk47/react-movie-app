@@ -48,6 +48,7 @@ fetchItems = (endpoint) => {
       totalPages: result.total_pages,
     })
   })
+  .catch(error => console.log(error))
 }
 
   render () {
