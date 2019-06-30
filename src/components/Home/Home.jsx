@@ -24,7 +24,7 @@ class Home extends Component {
     this.fetchItems(endpoint)
   }
 
-  searchItem = (searchTerm) => {
+  searchItems = (searchTerm) => {
     let endpoint = '';
     this.setState({
       movies: [],
@@ -77,7 +77,7 @@ class Home extends Component {
               title={this.state.heroImage.original_title}
               text={this.state.heroImage.overview}
             />
-            <SearchBar />
+            <SearchBar callback={this.searchItems}/>
           </div> : null}
         <FourColGrid />
         <Spinner />
