@@ -77,11 +77,27 @@ class Home extends Component {
               title={this.state.heroImage.original_title}
               text={this.state.heroImage.overview}
             />
-            <SearchBar callback={this.searchItems}/>
+            <SearchBar callback={this.searchItems} />
           </div> : null}
-        <FourColGrid />
-        <Spinner />
-        <LoadMoreBtn />
+        <div className='rmdb-home-grid'>
+          <FourColGrid
+            header={this.state.searchTerm ? 'Search Results' : 'Popular Movies'}
+            loading={this.state.loading}
+          >
+            {this.state.movies.map((element, i) => {
+              return <MovieThumb
+                key={i}
+                clickable={true}
+                image={element.poster_path ? `${IMAGE_BASE_URL}${POSTER_SIZE}/${element.poster_path}` : './images/no_image.jpg'}
+                movieId={element.id}
+                movieName={element.original_title}
+              />
+            })}
+          </FourColGrid>
+          {this.state.loading ? <Spinner /> : null}
+          {(this.state.currentPage <= this.state.totalPages && !this.state.loading) ?
+            <LoadMoreBtn onClick={this.loadMoreItems} text='Load More' /> : null}
+        </div>
       </div>
     )
   }
