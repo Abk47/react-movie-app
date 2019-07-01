@@ -64,7 +64,7 @@ class Home extends Component {
           totalPages: result.total_pages,
         })
       })
-      .catch(error => console.log(error))
+      .catch(error => console.error('Error', error))
   }
 
   render() {
