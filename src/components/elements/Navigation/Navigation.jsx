@@ -4,7 +4,15 @@ import './Navigation.css'
 
 const Navigation = (props) => {
   return (
-    <h1>Navigation</h1>
+    <div className='rmdb-navigation'>
+      <div className='rmdb-navigation-content' >
+        <Link to='/'>
+          <p>Home</p>
+        </Link>
+        <p>/</p>
+        <p>{props.movie}</p>
+      </div>
+    </div>
   )
 }
 

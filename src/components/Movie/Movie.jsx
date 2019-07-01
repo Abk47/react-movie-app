@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { API_URL, API_KEY } from '../../config'
 import Navigation from '../elements/Navigation/Navigation'
-// import FourColGrid from '../elements/FourColGrid/FourColGrid'
+import FourColGrid from '../elements/FourColGrid/FourColGrid'
 import MovieInfo from '../elements/MovieInfo/MovieInfo'
 import MovieInfoBar from '../elements/MovieInfoBar/MovieInfoBar'
 import Actor from '../elements/Actor/Actor'
@@ -47,6 +47,7 @@ class Movie extends Component {
           })
         })
       }
+
     })
     .catch(error => console.error('Error:', error))
   }
@@ -57,7 +58,7 @@ class Movie extends Component {
         <Navigation />
         <MovieInfo />
         <MovieInfoBar />
-        {/* <FourColGrid /> */}
+        <FourColGrid />
         <Spinner />
       </div>
     )
