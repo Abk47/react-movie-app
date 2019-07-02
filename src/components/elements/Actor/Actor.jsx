@@ -4,7 +4,7 @@ import './Actor.css'
 
 const Actor = (props) => {
 
-  const POSTER_SIZE = 'W154'
+  const POSTER_SIZE = 'w154'
   return (
     <div className='rmdb-actor'>
       <img
