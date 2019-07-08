@@ -60,6 +60,7 @@ class Home extends Component {
   // This promise function is written using Async & Await 
   fetchItems = async endpoint => {
     const result = await(await fetch(endpoint)).json()
+    try{
     this.setState({
       movies: [...this.state.movies, ...result.results],
       heroImage: this.state.heroImage || result.results[0],
@@ -71,6 +72,10 @@ class Home extends Component {
         localStorage.setItem('HomeState', JSON.stringify(this.state))
       }
     })
+  }
+  catch(e){
+    console.log('There was an Error: ', e)
+  }
   }
 
   // fetchItems = (endpoint) => {
