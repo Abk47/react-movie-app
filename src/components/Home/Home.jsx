@@ -57,24 +57,40 @@ class Home extends Component {
     this.fetchItems(endpoint)
   }
 
-  fetchItems = (endpoint) => {
-    fetch(endpoint)
-      .then(result => result.json())
-      .then(result => {
-        this.setState({
-          movies: [...this.state.movies, ...result.results],
-          heroImage: this.state.heroImage || result.results[0],
-          loading: false,
-          currentPage: result.page,
-          totalPages: result.total_pages,
-        }, () => {
-          if(this.state.searchTerm === ''){
-            localStorage.setItem('HomeState', JSON.stringify(this.state))
-          }
-        })
-      })
-      .catch(error => console.error('Error', error))
+  // This promise function is written using Async & Await 
+  fetchItems = async endpoint => {
+    const result = await(await fetch(endpoint)).json()
+    this.setState({
+      movies: [...this.state.movies, ...result.results],
+      heroImage: this.state.heroImage || result.results[0],
+      loading: false,
+      currentPage: result.page,
+      totalPages: result.total_pages,
+    }, () => {
+      if(this.state.searchTerm === ''){
+        localStorage.setItem('HomeState', JSON.stringify(this.state))
+      }
+    })
   }
+
+  // fetchItems = (endpoint) => {
+  //   fetch(endpoint)
+  //     .then(result => result.json())
+  //     .then(result => {
+  //       this.setState({
+  //         movies: [...this.state.movies, ...result.results],
+  //         heroImage: this.state.heroImage || result.results[0],
+  //         loading: false,
+  //         currentPage: result.page,
+  //         totalPages: result.total_pages,
+  //       }, () => {
+  //         if(this.state.searchTerm === ''){
+  //           localStorage.setItem('HomeState', JSON.stringify(this.state))
+  //         }
+  //       })
+  //     })
+  //     .catch(error => console.error('Error', error))
+  // }
 
   render() {
     return (
